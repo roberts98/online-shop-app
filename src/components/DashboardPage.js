@@ -1,8 +1,9 @@
 import React from 'react';
+import ItemList from './ItemList';
 
 const DashboardPage = () => (
   <div>
-    Dashboard page content
+    <ItemList />
   </div>
 );
 
