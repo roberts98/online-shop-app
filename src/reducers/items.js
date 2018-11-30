@@ -5,6 +5,17 @@ const itemsReducer = (state = [], action) => {
         ...state,
         action.item
       ];
+    case 'EDIT_ITEM':
+      return state.map((item) => {
+        if (item.id === action.id) {
+          return {
+            ...item,
+            ...action.updates
+          };
+        } else {
+          return item;
+        }
+      });
     default:
       return state;
   };

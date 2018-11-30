@@ -1,15 +1,15 @@
 import React from 'react';
 import moment from 'moment';
 
-export default class AddItemForm extends React.Component {
+export default class ItemForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      name: '',
-      description: '',
-      price: '',
+      name: props.item ? props.item.name : '',
+      description: props.item ? props.item.description : '',
+      price: props.item ? props.item.name : '',
       createdAt: moment().valueOf(),
-      location: '',
+      location: props.item ? props.item.location : '',
       error: ''
     }
   };
@@ -54,6 +54,7 @@ export default class AddItemForm extends React.Component {
             name="name"
             placeholder="Item"
             onChange={this.nameChange}
+            value={this.state.name}
             autoFocus
           />
           <input
@@ -61,20 +62,23 @@ export default class AddItemForm extends React.Component {
             name="description"
             placeholder="Description"
             onChange={this.descriptionChange}
+            value={this.state.description}
           />
           <input
             type="text"
             name="price"
             placeholder="Price"
             onChange={this.priceChange}
+            value={this.state.price}
           />
           <input
             type="text"
             name="location"
             placeholder="Location"
             onChange={this.locationChange}
+            value={this.state.location}
           />
-          <button>Submit</button>
+          <button>Save Item</button>
         </form>
       </div>
     );
