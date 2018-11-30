@@ -13,7 +13,7 @@ const ItemList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    items: getItems(state.items)
+    items: getItems(state.items, state.filters)
   }
 };
 
