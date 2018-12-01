@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editItem, buyItem } from '../actions/items';
+import { editItem } from '../actions/items';
 import ItemForm from './ItemForm';
 
 const EditItemPage = (props) => (
@@ -9,10 +9,6 @@ const EditItemPage = (props) => (
       item={props.item}
       onSubmit={(item) => {
         props.dispatch(editItem(props.item.id, item));
-        props.history.push('/');
-      }}
-      onBuy={() => {
-        props.dispatch(buyItem(props.item.id));
         props.history.push('/');
       }}
     />

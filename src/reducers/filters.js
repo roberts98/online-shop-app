@@ -1,5 +1,6 @@
 const defaultState = {
-  text: ''
+  text: '',
+  category: 'all'
 };
 
 const filtersReducer = (state = defaultState, action) => {
@@ -9,6 +10,11 @@ const filtersReducer = (state = defaultState, action) => {
         ...state,
         text: action.text
       };
+    case 'SET_CATEGORY':
+      return {
+        ...state,
+        category: action.category
+      }
     default:
       return state;
   };

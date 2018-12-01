@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter } from '../actions/filters';
+import { setTextFilter, setCategory } from '../actions/filters';
 
 const ItemListFilters = (props) => (
   <div>
@@ -13,6 +13,17 @@ const ItemListFilters = (props) => (
       }}
     >
     </input>
+    <select
+      value={props.filters.category}
+      onChange={(e) => {
+        props.dispatch(setCategory(e.target.value));
+      }}
+    >
+      <option value="all">All</option>
+      <option value="clothes">Clothes</option>
+      <option value="electronics">Electronics</option>
+      <option value="others">Others</option>
+    </select>
   </div>
 );
 

@@ -10,12 +10,12 @@ class ShoppingCard extends React.Component {
   render() {
     return (
       <div>
-      {this.props.items.map((item) => (
-        <ItemListOne
-          key={item.name}
-          {...item}
-        />
-      ))}
+        {this.props.items.map((item) => (
+          <ItemListOne
+            key={item.name}
+            {...item}
+          />
+        ))}
       </div>
     );
   }

@@ -9,6 +9,8 @@ export default class ItemForm extends React.Component {
       description: props.item ? props.item.description : '',
       price: props.item ? props.item.price : '',
       createdAt: moment().valueOf(),
+      photo: props.item ? props.item.photo : '',
+      category: props.item ? props.item.category : 'clothes',
       location: props.item ? props.item.location : '',
       isBought: props.item ? props.item.isBought : false,
       error: ''
@@ -18,6 +20,10 @@ export default class ItemForm extends React.Component {
     const name = e.target.value;
     this.setState(() => ({ name }));
   };
+  categoryChange = (e) => {
+    const category = e.target.value;
+    this.setState(() => ({ category }));
+  };
   descriptionChange = (e) => {
     const description = e.target.value;
     this.setState(() => ({ description }));
@@ -26,27 +32,27 @@ export default class ItemForm extends React.Component {
     const price = e.target.value;
     this.setState(() => ({ price }));
   };
+  photoChange = (e) => {
+    const photo = e.target.value;
+    this.setState(() => ({ photo }));
+  };
   locationChange = (e) => {
     const location = e.target.value;
     this.setState(() => ({ location }));
   };
-  boughtChange = () => {
-    this.setState(() => ({ isBought: true }));
-    this.props.onBuy({
-      isBought: this.state.isBought
-    });
-  } 
   onSubmit = (e) => {
     e.preventDefault();
     if (!this.state.name || !this.state.description || !this.state.price || !this.state.location) {
-      this.setState(() => ({ error: 'Please provide all informations'}));
+      this.setState(() => ({ error: 'Please provide all informations' }));
     } else {
       this.setState(() => ({ error: '' }));
       this.props.onSubmit({
         name: this.state.name,
         description: this.state.description,
         price: this.state.price,
+        category: this.state.category,
         createdAt: this.state.createdAt,
+        photo: this.state.photo || 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png',
         location: this.state.location
       });
     };
@@ -78,6 +84,21 @@ export default class ItemForm extends React.Component {
             onChange={this.priceChange}
             value={this.state.price}
           />
+          <select
+            onChange={this.categoryChange}
+            value={this.state.category}
+          >
+            <option>clothes</option>
+            <option>electronics</option>
+            <option>others</option>
+          </select>
+          <input
+            type="text"
+            name="photo"
+            placeholder="Image URL"
+            onChange={this.photoChange}
+            value={this.state.photo}
+          />
           <input
             type="text"
             name="location"
@@ -87,7 +108,6 @@ export default class ItemForm extends React.Component {
           />
           <button>Save Item</button>
         </form>
-        <button onClick={this.boughtChange}>Buy Item</button>
       </div>
     );
   }

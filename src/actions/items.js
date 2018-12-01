@@ -1,13 +1,15 @@
 import uuid from 'uuid';
 
-export const addItem = ({ id = uuid(), name, description, price, createdAt, location, isBought = false }) => ({
+export const addItem = ({ id = uuid(), name, description, category, price, createdAt, photo, location, isBought = false }) => ({
   type: 'ADD_ITEM',
   item: {
     id,
     name,
+    category,
     description,
     price,
     createdAt,
+    photo,
     location,
     isBought
   }
