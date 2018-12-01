@@ -7,9 +7,10 @@ export default class ItemForm extends React.Component {
     this.state = {
       name: props.item ? props.item.name : '',
       description: props.item ? props.item.description : '',
-      price: props.item ? props.item.name : '',
+      price: props.item ? props.item.price : '',
       createdAt: moment().valueOf(),
       location: props.item ? props.item.location : '',
+      isBought: props.item ? props.item.isBought : false,
       error: ''
     }
   };
@@ -29,6 +30,12 @@ export default class ItemForm extends React.Component {
     const location = e.target.value;
     this.setState(() => ({ location }));
   };
+  boughtChange = () => {
+    this.setState(() => ({ isBought: true }));
+    this.props.onBuy({
+      isBought: this.state.isBought
+    });
+  } 
   onSubmit = (e) => {
     e.preventDefault();
     if (!this.state.name || !this.state.description || !this.state.price || !this.state.location) {
@@ -80,6 +87,7 @@ export default class ItemForm extends React.Component {
           />
           <button>Save Item</button>
         </form>
+        <button onClick={this.boughtChange}>Buy Item</button>
       </div>
     );
   }
