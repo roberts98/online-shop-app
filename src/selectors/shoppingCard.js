@@ -1,6 +1,6 @@
-const getItems = (items) => {
+const getItems = (items, id) => {
   return items.filter((item) => {
-    const isBought = item.isBought;
+    const isBought = item.isBought && (item.buyerId === id)
     return isBought;
   });
 };

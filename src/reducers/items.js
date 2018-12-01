@@ -20,11 +20,14 @@ const itemsReducer = (state = [], action) => {
       return state.map((item) => {
         if (item.id === action.id) {
           item.isBought = true;
+          item.buyerId = action.uid;
           return item;
         } else {
           return item;
         }
       });
+    case 'SET_ITEMS':
+      return action.items;
     default:
       return state;
   };

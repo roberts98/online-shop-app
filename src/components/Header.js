@@ -16,7 +16,8 @@ export const Header = ({ startLogout }) => (
       </div>
     </header>
     <div>
-      <Link to="/create">Add new item</Link>
+      <Link to="/create">Add new item </Link>
+      <Link to="/card">Go to Card</Link>
     </div>
   </div>
 );

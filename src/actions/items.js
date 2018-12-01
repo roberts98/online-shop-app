@@ -1,19 +1,36 @@
-import uuid from 'uuid';
+import database from '../firebase/firebase';
+import moment from 'moment';
 
-export const addItem = ({ id = uuid(), name, description, category, price, createdAt, photo, location, isBought = false }) => ({
+export const addItem = (item) => ({
   type: 'ADD_ITEM',
-  item: {
-    id,
-    name,
-    category,
-    description,
-    price,
-    createdAt,
-    photo,
-    location,
-    isBought
-  }
+  item
 });
+
+export const startAddItem = (itemData = {}) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    const {
+      sellerId = uid,
+      name = '',
+      description = '',
+      category = 'clothes',
+      price = Number,
+      createdAt = 0,
+      photo = '',
+      location = '',
+      isBought = false,
+      buyerId = ''
+    } = itemData;
+    const item = { sellerId, name, description, category, price, createdAt, photo, location, isBought, buyerId};
+    console.log(typeof item.price);
+    return database.ref(`items`).push(item).then((ref) => {
+      dispatch(addItem({
+        id: ref.key,
+        ...item
+      }));
+    });
+  };
+};
 
 export const editItem = (id, updates) => ({
   type: 'EDIT_ITEM',
@@ -21,7 +38,45 @@ export const editItem = (id, updates) => ({
   updates
 });
 
-export const buyItem = (id) => ({
+export const startEditItem = (id, updates) => {
+  return (disptach) => {
+    return database.ref(`/items/${id}`).update(updates).then(() => {
+      disptach(editItem(id, updates));
+    });
+  };
+};
+
+export const buyItem = (id, uid) => ({
   type: 'BUY_ITEM',
-  id
+  id,
+  uid
 });
+
+export const startBuyItem = (id) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`/items/${id}`).update({ isBought: true, buyerId: uid }).then(() => {
+      dispatch(buyItem(id, uid));
+    });
+  };
+};
+
+export const setItems = (items) => ({
+  type: 'SET_ITEMS',
+  items
+});
+
+export const startSetItems = () => {
+  return (dispatch) => {
+    return database.ref('items').once('value').then((snapshot) => {
+      const items = [];
+      snapshot.forEach((childSnapshot) => {
+        items.push({
+          id: childSnapshot.key,
+          ...childSnapshot.val()
+        })
+      });
+      dispatch(setItems(items));
+    });
+  };
+}

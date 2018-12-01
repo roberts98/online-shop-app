@@ -2,20 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NotFoundPage from '../components/NotFoundPage';
-import { buyItem } from '../actions/items';
+import { startBuyItem } from '../actions/items';
 
 const ShowItem = (props) => (
   <div>
     {props.item ? (
       <div>
         <Link to={`/items/${props.item.id}/edit`}><h2>{props.item.name}</h2></Link>
-        <button
-          onClick={() => {
-            props.dispatch(buyItem(props.item.id));
-            props.history.push('/');
-          }}>
-          Buy
-      </button>
+        <p>{props.item.description}</p>
+        {props.item.isBought ? (
+          <p>Item bought</p>
+        ) : (
+            <button
+              onClick={() => {
+                props.dispatch(startBuyItem(props.item.id));
+                props.history.push('/card');
+              }}
+            >
+              Buy
+            </button>
+          )}
       </div>
     ) : (
         <NotFoundPage />

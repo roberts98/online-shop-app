@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItem } from '../actions/items';
+import { startAddItem } from '../actions/items';
 import ItemForm from './ItemForm';
 
 const AddItemPage = (props) => (
   <div>
     <ItemForm
       onSubmit={(item) => {
-        props.dispatch(addItem(item));
+        props.dispatch(startAddItem(item));
         props.history.push('/');
       }}
     />

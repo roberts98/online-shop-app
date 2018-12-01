@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import getItems from '../selectors/shoppingCard';
 import ItemListOne from './ItemListOne';
+import { startSetItems } from '../actions/items';
 
 class ShoppingCard extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class ShoppingCard extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: getItems(state.items)
+    items: getItems(state.items, state.auth.uid)
   }
 };
 

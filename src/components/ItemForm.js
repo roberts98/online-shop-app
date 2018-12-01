@@ -7,8 +7,8 @@ export default class ItemForm extends React.Component {
     this.state = {
       name: props.item ? props.item.name : '',
       description: props.item ? props.item.description : '',
-      price: props.item ? props.item.price : '',
-      createdAt: moment().valueOf(),
+      price: props.item ? props.item.price.toString() : '',
+      createdAt: props.item ? moment(props.item.createdAt) : moment(),
       photo: props.item ? props.item.photo : '',
       category: props.item ? props.item.category : 'clothes',
       location: props.item ? props.item.location : '',
@@ -30,7 +30,9 @@ export default class ItemForm extends React.Component {
   };
   priceChange = (e) => {
     const price = e.target.value;
-    this.setState(() => ({ price }));
+    if (!price || price.match(/^\d{1,}(\.\d{0,2})?$/)) {
+      this.setState(() => ({ price }));
+    }
   };
   photoChange = (e) => {
     const photo = e.target.value;
@@ -49,9 +51,9 @@ export default class ItemForm extends React.Component {
       this.props.onSubmit({
         name: this.state.name,
         description: this.state.description,
-        price: this.state.price,
+        price: parseFloat(this.state.price, 10),
         category: this.state.category,
-        createdAt: this.state.createdAt,
+        createdAt: this.state.createdAt.valueOf(),
         photo: this.state.photo || 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png',
         location: this.state.location
       });
