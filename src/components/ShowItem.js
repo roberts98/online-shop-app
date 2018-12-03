@@ -10,13 +10,13 @@ const ShowItem = (props) => (
       <div>
         <Link to={`/items/${props.item.id}/edit`}><h2>{props.item.name}</h2></Link>
         <p>{props.item.description}</p>
-        {props.item.isBought ? (
-          <p>Item bought</p>
+        {!props.uid || props.item.isBought || props.item.sellerId === props.uid ? (
+          <p>You cannot buy this item</p>
         ) : (
             <button
               onClick={() => {
                 props.dispatch(startBuyItem(props.item.id));
-                props.history.push('/card');
+                props.history.push('/cart');
               }}
             >
               Buy
@@ -31,7 +31,8 @@ const ShowItem = (props) => (
 
 const mapStateToProps = (state, props) => {
   return {
-    item: state.items.find((item) => item.id === props.match.params.id)
+    item: state.items.find((item) => item.id === props.match.params.id),
+    uid: state.auth.uid 
   }
 };
 

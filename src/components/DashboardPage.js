@@ -1,11 +1,8 @@
 import React from 'react';
-import MainItemList from './MainItemList';
-import ItemListFilters from './ItemListFilters';
 
 const DashboardPage = () => (
   <div>
-    <ItemListFilters />
-    <MainItemList />
+    <h1>Dashboard</h1>  
   </div>
 );
 

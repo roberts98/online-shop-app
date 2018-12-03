@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
+import NoAccesPage from '../components/NoAccesPage';
 
 export const PrivateRoute = ({
   isAuthenticated,
@@ -11,11 +12,11 @@ export const PrivateRoute = ({
     <Route {...rest} component={(props) => (
       isAuthenticated ? (
         <div>
-          <Header />
+          <Navbar />
           <Component {...props} />
         </div>
       ) : (
-          <Redirect to="/" />
+          <NoAccesPage />
         )
     )} />
   );

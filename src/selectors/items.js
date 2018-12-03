@@ -5,10 +5,14 @@ const getItems = (items, { text, category, sortBy }) => {
     const isBought = !item.isBought;
     return textMatch && isBought && categoryMatch;
   }).sort((a, b) => {
-    if (sortBy === 'date') {
+    if (sortBy === 'date-desc') {
       return a.createdAt < b.createdAt ? 1 : -1;
-    } else if (sortBy === 'price') {
+    } else if(sortBy === 'date-asc') {
+      return a.createdAt > b.createdAt ? 1 : -1;
+    } else if (sortBy === 'price-desc') {
       return a.price < b.price ? 1 : -1;
+    } else if (sortBy === 'price-asc') {
+      return a.price > b.price ? 1 : -1;
     }
   });
 };

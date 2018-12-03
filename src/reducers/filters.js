@@ -16,15 +16,25 @@ const filtersReducer = (state = defaultState, action) => {
         ...state,
         category: action.category
       };
-    case 'SORT_BY_DATE':
+    case 'SORT_BY_DATE_DESC':
       return {
         ...state,
-        sortBy: 'date'
+        sortBy: 'date-desc'
       };
-    case 'SORT_BY_PRICE':
+    case 'SORT_BY_DATE_ASC':
       return {
         ...state,
-        sortBy: 'price'
+        sortBy: 'date-asc'
+      };
+    case 'SORT_BY_PRICE_DESC':
+      return {
+        ...state,
+        sortBy: 'price-desc'
+      };
+    case 'SORT_BY_PRICE_ASC':
+      return {
+        ...state,
+        sortBy: 'price-asc'
       };
     default:
       return state;

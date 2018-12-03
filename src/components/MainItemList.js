@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import getItems from '../selectors/items';
 import ItemListOne from './ItemListOne';
+import ItemListFilters from './ItemListFilters';
 
 const ItemList = (props) => (
   <div>
+    <ItemListFilters />
     {props.items.map((item) => (
       <ItemListOne
         key={item.name}

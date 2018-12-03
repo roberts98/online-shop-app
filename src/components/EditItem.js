@@ -2,20 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startEditItem } from '../actions/items';
 import ItemForm from './ItemForm';
+import NoAccesPage from './NoAccesPage';
 
 const EditItemPage = (props) => (
   <div>
     {props.uid === props.item.sellerId ? (
       <ItemForm
-      item={props.item}
-      onSubmit={(item) => {
-        props.dispatch(startEditItem(props.item.id, item));
-        props.history.push('/');
-      }}
-    />
+        item={props.item}
+        onSubmit={(item) => {
+          props.dispatch(startEditItem(props.item.id, item));
+          props.history.push('/');
+        }}
+      />
     ) : (
-      props.history.push('/')
-    )}
+        <NoAccesPage />
+      )}
 
   </div>
 );

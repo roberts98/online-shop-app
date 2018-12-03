@@ -8,10 +8,18 @@ export const setCategory = (category) => ({
   category
 });
 
-export const sortByDate = () => ({
-  type: 'SORT_BY_DATE'
+export const sortByDateDESC = () => ({
+  type: 'SORT_BY_DATE_DESC'
 });
 
-export const sortByPrice = () => ({
-  type: 'SORT_BY_PRICE'
+export const sortByDateASC = () => ({
+  type: 'SORT_BY_DATE_ASC'
+});
+
+export const sortByPriceDESC = () => ({
+  type: 'SORT_BY_PRICE_DESC'
+});
+
+export const sortByPriceASC = () => ({
+  type: 'SORT_BY_PRICE_ASC'
 });
