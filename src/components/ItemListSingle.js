@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
-const ItemListOne = ({ id, name, description, price, createdAt, photo, location }) => (
+const ItemListSingle = ({ id, name, description, price, createdAt, photo, location }) => (
   <div>
     <Link to={`items/${id}`}><h2>{name}</h2></Link>
     <p><em>{price}</em> - {location}</p>
@@ -12,4 +12,4 @@ const ItemListOne = ({ id, name, description, price, createdAt, photo, location 
   </div>
 );
 
-export default ItemListOne;
+export default ItemListSingle;

@@ -1,7 +1,7 @@
 const defaultState = {
   text: '',
   category: 'all',
-  sortBy: 'date'
+  sortBy: 'date-desc'
 };
 
 const filtersReducer = (state = defaultState, action) => {

@@ -9,6 +9,7 @@ import ShoppingCart from '../components/ShoppingCart';
 import ShowItem from '../components/ShowItem';
 import Header from '../components/Header';
 import DashboardPage from '../components/DashboardPage';
+import MySellItems from '../components/MySellItems';
 import PrivateRoute from './PrivateRoute';
 
 export const history = createHistory();
@@ -24,6 +25,7 @@ const AppRouter = () => (
         <PrivateRoute path="/dashboard" component={DashboardPage} />
         <PrivateRoute path="/cart" component={ShoppingCart} />
         <PrivateRoute path="/create" component={AddItem} />
+        <PrivateRoute path="/my-items" component={MySellItems} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

@@ -1,12 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import getItems from '../selectors/items';
 import ItemListSingle from './ItemListSingle';
-import ItemListFilters from './ItemListFilters';
 
-const ItemList = (props) => (
+const MySellItems = (props) => (
   <div>
-    <ItemListFilters />
     {props.items.map((item) => (
       <ItemListSingle
         key={item.name}
@@ -18,8 +15,8 @@ const ItemList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    items: getItems(state.items, state.filters)
+    items: state.items.filter((item) => item.sellerId === state.auth.uid)
   }
 };
 
-export default connect(mapStateToProps)(ItemList);
+export default connect(mapStateToProps)(MySellItems);
