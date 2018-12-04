@@ -6,7 +6,7 @@ import { startLogout, startLoginGoogle } from '../actions/auth';
 export const Header = (props) => (
   <div>
     <header className="header">
-      <div className="content-container">
+      <div className="container">
         <div className="header__content">
           <Link className="header__title" to="/">
             <h1>Shopping Online</h1>

@@ -1,5 +1,17 @@
 import database from '../firebase/firebase';
-import moment from 'moment';
+
+export const incViews = (id) => ({
+  type: 'INCREMENT_VIEWS',
+  id
+});
+
+export const startIncViews = (item) => {
+  return (dispatch) => {
+    return database.ref(`/items/${item.id}`).update({ views: ++item.views }).then(() => {
+      dispatch(incViews(item.id));
+    });
+  }
+};
 
 export const addItem = (item) => ({
   type: 'ADD_ITEM',
@@ -19,9 +31,10 @@ export const startAddItem = (itemData = {}) => {
       photo = '',
       location = '',
       isBought = false,
-      buyerId = ''
+      buyerId = '',
+      views = 0
     } = itemData;
-    const item = { sellerId, name, description, category, price, createdAt, photo, location, isBought, buyerId};
+    const item = { sellerId, name, description, category, price, createdAt, photo, location, isBought, buyerId, views };
     console.log(typeof item.price);
     return database.ref(`items`).push(item).then((ref) => {
       dispatch(addItem({

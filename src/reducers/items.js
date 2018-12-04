@@ -28,6 +28,13 @@ const itemsReducer = (state = [], action) => {
       });
     case 'SET_ITEMS':
       return action.items;
+    case 'INCREMENT_VIEWS':
+    return state.map((item) => {
+      return {
+        ...item,
+        ...item.views
+      }
+    });
     default:
       return state;
   };

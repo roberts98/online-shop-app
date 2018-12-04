@@ -61,24 +61,32 @@ export default class ItemForm extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="container">
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Item"
-            onChange={this.nameChange}
-            value={this.state.name}
-            autoFocus
-          />
-          <input
-            type="text"
-            name="description"
-            placeholder="Description"
-            onChange={this.descriptionChange}
-            value={this.state.description}
-          />
+          <div className="form-group">
+              <input
+                className="form-control"
+                type="text"
+                name="name"
+                placeholder="Item name"
+                onChange={this.nameChange}
+                value={this.state.name}
+                autoFocus
+              />
+          </div>
+          <div className="form-group">
+            <textarea
+              className="form-control"
+              type="text"
+              name="description"
+              placeholder="Description"
+              onChange={this.descriptionChange}
+              value={this.state.description}
+              rows="8"
+            >
+            </textarea>
+          </div>
           <input
             type="text"
             name="price"

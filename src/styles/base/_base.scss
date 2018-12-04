@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 body {
   color: $dark-grey;
   font-family: Helvetica, Arial, sans-serif;
@@ -23,4 +19,8 @@ button:disabled {
 
 .is-active {
   font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
 }

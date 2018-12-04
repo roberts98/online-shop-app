@@ -5,7 +5,7 @@ import ItemListSingle from './ItemListSingle';
 import ItemListFilters from './ItemListFilters';
 
 const ItemList = (props) => (
-  <div>
+  <div className="container">
     <ItemListFilters />
     {props.items.map((item) => (
       <ItemListSingle
