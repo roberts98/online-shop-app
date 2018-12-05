@@ -1,8 +1,8 @@
 {
-  "name": "boilerplate-react-app",
+  "name": "online-shop-react-app",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Andrew Mead",
+  "author": "Robert Sidzinka",
   "license": "MIT",
   "scripts": {
     "build:dev": "webpack",
@@ -12,7 +12,7 @@
     "start": "node server/server.js",
     "heroku-postbuild": "yarn run build:prod"
   },
-  "dependencies": {
+  "dhependencies": {
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",
     "babel-loader": "7.1.1",
@@ -54,5 +54,8 @@
     "jest": "20.0.4",
     "react-test-renderer": "15.6.1",
     "webpack-dev-server": "2.5.1"
+  },
+  "engines": {
+    "node": "8.10.0"
   }
 }
