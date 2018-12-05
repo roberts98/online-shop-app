@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ItemListSingle from './ItemListSingle';
 
 export const ShoppingCart = (props) => (
-  <div>
+  <div className="container">
     {props.items.length > 0 ? (
       props.items.map((item) => (
         <ItemListSingle
@@ -18,7 +18,6 @@ export const ShoppingCart = (props) => (
 )
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     items: state.items.filter((item) => (item.isBought && item.buyerId === state.auth.uid))
   }

@@ -3,9 +3,19 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => (
   <div className="container">
-    <Link to="/create">Add new item </Link>
-    <Link to="/cart">Go to cart</Link>
-    <Link to="/my-items">My items</Link>
+    <div className="dashboard-navbar">
+      <ul className="nav nav-tabs">
+        <li className="nav-item">
+          <Link to="/dashboard/orders/bought" className="nav-link">Orders</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/dashboard/sellings/sold" className="nav-link">Sellings</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/dashboard/my-items" className="nav-link">Account</Link>
+        </li>
+      </ul>
+    </div>
   </div>
 );
 

@@ -5,11 +5,12 @@ import MainItemList from '../components/MainItemList';
 import AddItem from '../components/AddItem';
 import EditItem from '../components/EditItem';
 import NotFoundPage from '../components/NotFoundPage';
-import ShoppingCart from '../components/ShoppingCart';
 import ShowItem from '../components/ShowItem';
 import Header from '../components/Header';
 import DashboardPage from '../components/DashboardPage';
-import MySellItems from '../components/MySellItems';
+import OrdersBoughtPage from '../components/OrdersBoughtPage';
+import SoldItems from '../components/sellings/SoldItems';
+import SellingNow from '../components/sellings/SellingNow';
 import PrivateRoute from './PrivateRoute';
 
 export const history = createHistory();
@@ -22,10 +23,11 @@ const AppRouter = () => (
         <Route path="/" component={MainItemList} exact={true} />
         <Route path="/items/:id" component={ShowItem} exact={true} />
         <PrivateRoute path="/items/:id/edit" component={EditItem} />
-        <PrivateRoute path="/dashboard" component={DashboardPage} />
-        <PrivateRoute path="/cart" component={ShoppingCart} />
+        <PrivateRoute path="/dashboard" component={DashboardPage} exact={true}/>
+        <PrivateRoute path="/dashboard/sellings/sold" component={SoldItems} />
+        <PrivateRoute path="/dashboard/sellings/sell" component={SellingNow} />
+        <PrivateRoute path="/dashboard/orders/bought" component={OrdersBoughtPage} />
         <PrivateRoute path="/create" component={AddItem} />
-        <PrivateRoute path="/my-items" component={MySellItems} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
