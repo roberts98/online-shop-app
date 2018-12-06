@@ -1,4 +1,5 @@
 const getItems = (items, { text, category, sortBy }) => {
+  console.log(items);
   return items.filter((item) => {
     const textMatch = item.name.toLowerCase().includes(text.toLowerCase());
     const categoryMatch = category === 'all' ? true : item.category === category;

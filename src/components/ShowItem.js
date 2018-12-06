@@ -12,7 +12,7 @@ class ShowItem extends React.Component {
     }
   }
   incViews = () => {
-    if (!this.state.wasInc) {
+    if (!this.state.wasInc && this.props.item) {
       this.props.dispatch(startIncViews(this.props.item));
       this.setState({ wasInc: true });
     }

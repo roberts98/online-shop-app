@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { startLogout, startLoginGoogle } from '../actions/auth';
+import { startLogout, startLoginGoogle, startRegister } from '../actions/auth';
 
 export const Header = (props) => (
   <div>
@@ -19,7 +19,10 @@ export const Header = (props) => (
               </Link>
             </div>
           ) : (
-              <button className="button button--link" onClick={props.startLoginGoogle}>Login with Google</button>
+              <div>
+                <button className="button button--link" onClick={props.startLoginGoogle}>Login with Google</button>
+                <Link to="/register"><button className="button button--link">Register</button></Link>
+              </div>
             )}
         </div>
       </div>
@@ -33,7 +36,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   startLogout: () => dispatch(startLogout()),
-  startLoginGoogle: () => dispatch(startLoginGoogle())
+  startLoginGoogle: () => dispatch(startLoginGoogle()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

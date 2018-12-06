@@ -11,7 +11,9 @@ import DashboardPage from '../components/DashboardPage';
 import OrdersBoughtPage from '../components/OrdersBoughtPage';
 import SoldItems from '../components/sellings/SoldItems';
 import SellingNow from '../components/sellings/SellingNow';
+import RegisterPage from '../components/RegisterPage';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 export const history = createHistory();
 
@@ -21,6 +23,7 @@ const AppRouter = () => (
     <Header />
       <Switch>
         <Route path="/" component={MainItemList} exact={true} />
+        <Route path="/register" component={RegisterPage} />
         <Route path="/items/:id" component={ShowItem} exact={true} />
         <PrivateRoute path="/items/:id/edit" component={EditItem} />
         <PrivateRoute path="/dashboard" component={DashboardPage} exact={true}/>

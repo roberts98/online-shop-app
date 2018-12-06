@@ -36,7 +36,7 @@ export const startAddItem = (itemData = {}) => {
     } = itemData;
     const item = { sellerId, name, description, category, price, createdAt, photo, location, isBought, buyerId, views };
     console.log(typeof item.price);
-    return database.ref(`items`).push(item).then((ref) => {
+    return database.ref(`/items`).push(item).then((ref) => {
       dispatch(addItem({
         id: ref.key,
         ...item
@@ -52,7 +52,8 @@ export const editItem = (id, updates) => ({
 });
 
 export const startEditItem = (id, updates) => {
-  return (disptach) => {
+  return (disptach, getState) => {
+    const uid = getState().auth.uid;
     return database.ref(`/items/${id}`).update(updates).then(() => {
       disptach(editItem(id, updates));
     });
@@ -81,7 +82,7 @@ export const setItems = (items) => ({
 
 export const startSetItems = () => {
   return (dispatch) => {
-    return database.ref('items').once('value').then((snapshot) => {
+    return database.ref('/items').once('value').then((snapshot) => {
       const items = [];
       snapshot.forEach((childSnapshot) => {
         items.push({
