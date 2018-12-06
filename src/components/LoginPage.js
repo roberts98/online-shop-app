@@ -1,36 +1,31 @@
 import React from 'react';
 import { firebase } from '../firebase/firebase';
 
-class RegisterPage extends React.Component {
+class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
-      repeatPassword: '',
       isSuccess: false,
       error: ''
     };
   };
-  register = (email, password) => {
+  login = (email, password) => {
     return () => {
-      if (this.state.password === this.state.repeatPassword) {
-        return firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(() => {
-            this.setState({ isSuccess: true, error: '' });
-            setTimeout(() => {
-              this.props.history.push('/');
-            }, 2000);
-          })
-          .catch((error) => {
-            if (error.code === 'auth/invalid-email') {
-              error.message = 'Please provide valid e-mail!'
-            }
-            this.setState({ error: error.message })
-          });
-      } else {
-        this.setState({ error: "Password don't match" });
-      }
+      return firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => {
+          setTimeout(() => {
+            this.props.history.push('/');
+          }, 2000);
+          this.setState({ isSuccess: true, error: '' });
+        })
+        .catch((error) => {
+          if (error.code === 'auth/invalid-email') {
+            error.message = 'Please provide valid e-mail!'
+          }
+          this.setState({ error: error.message })
+        });
     };
   };
   onSubmit = (e) => {
@@ -43,10 +38,6 @@ class RegisterPage extends React.Component {
   passwordChange = (e) => {
     const password = e.target.value;
     this.setState({ password });
-  };
-  repeatPasswordChange = (e) => {
-    const repeatPassword = e.target.value;
-    this.setState({ repeatPassword });
   };
   render() {
     return (
@@ -80,21 +71,11 @@ class RegisterPage extends React.Component {
               onChange={this.passwordChange}
             />
           </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              type="password"
-              name="repeatPassword"
-              placeholder="repeat password"
-              value={this.state.repeatPassword}
-              onChange={this.repeatPasswordChange}
-            />
-          </div>
           <button
             className="btn btn-primary float-right"
-            onClick={this.register(this.state.email, this.state.password)}
+            onClick={this.login(this.state.email, this.state.password)}
           >
-            Register
+            Login
           </button>
         </form>
       </div>
@@ -102,4 +83,4 @@ class RegisterPage extends React.Component {
   };
 };
 
-export default RegisterPage;
+export default LoginPage;

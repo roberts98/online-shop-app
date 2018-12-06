@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { startLogout, startLoginGoogle, startRegister } from '../actions/auth';
+import { startLogout, startLoginGoogle } from '../actions/auth';
 
 export const Header = (props) => (
   <div>
@@ -20,8 +20,9 @@ export const Header = (props) => (
             </div>
           ) : (
               <div>
-                <button className="button button--link" onClick={props.startLoginGoogle}>Login with Google</button>
                 <Link to="/register"><button className="button button--link">Register</button></Link>
+                <Link to="/login"><button className="button button--link">Login</button></Link>
+                <button className="button button--link" onClick={props.startLoginGoogle}>Login with Google</button>
               </div>
             )}
         </div>

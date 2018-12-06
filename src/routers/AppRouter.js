@@ -12,6 +12,7 @@ import OrdersBoughtPage from '../components/OrdersBoughtPage';
 import SoldItems from '../components/sellings/SoldItems';
 import SellingNow from '../components/sellings/SellingNow';
 import RegisterPage from '../components/RegisterPage';
+import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
@@ -24,9 +25,10 @@ const AppRouter = () => (
       <Switch>
         <Route path="/" component={MainItemList} exact={true} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/login" component={LoginPage} />
         <Route path="/items/:id" component={ShowItem} exact={true} />
         <PrivateRoute path="/items/:id/edit" component={EditItem} />
-        <PrivateRoute path="/dashboard" component={DashboardPage} exact={true}/>
+        <PrivateRoute path="/dashboard" component={DashboardPage} exact={true} />
         <PrivateRoute path="/dashboard/sellings/sold" component={SoldItems} />
         <PrivateRoute path="/dashboard/sellings/sell" component={SellingNow} />
         <PrivateRoute path="/dashboard/orders/bought" component={OrdersBoughtPage} />
