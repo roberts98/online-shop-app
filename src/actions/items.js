@@ -32,10 +32,11 @@ export const startAddItem = (itemData = {}) => {
       location = '',
       isBought = false,
       buyerId = '',
-      views = 0
+      views = 0,
+      typeOfSale = 'buyNow',
+      stateOfItem = 'new'
     } = itemData;
-    const item = { sellerId, name, description, category, price, createdAt, photo, location, isBought, buyerId, views };
-    console.log(typeof item.price);
+    const item = { sellerId, name, description, category, price, createdAt, photo, location, isBought, buyerId, views, typeOfSale, stateOfItem };
     return database.ref(`/items`).push(item).then((ref) => {
       dispatch(addItem({
         id: ref.key,

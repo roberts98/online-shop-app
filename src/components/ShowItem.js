@@ -25,7 +25,7 @@ class ShowItem extends React.Component {
       <div>
         {this.props.item ? (
           <div>
-            <Link to={`items/${this.props.item.id}/edit`}><h2>{this.props.item.name}</h2></Link>
+            <Link to={`/items/${this.props.item.id}/edit`}><h2>{this.props.item.name}</h2></Link>
             <p>{this.props.item.views}</p>
             {!this.props.uid || this.props.item.isBought || this.props.item.sellerId === this.props.uid ? (
               <p>You cannot buy this item</p>

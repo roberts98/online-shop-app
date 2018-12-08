@@ -5,7 +5,7 @@ import ItemForm from './ItemForm';
 import NoAccesPage from './NoAccesPage';
 
 const EditItemPage = (props) => (
-  <div>
+  <div className="container">
     {props.uid === props.item.sellerId ? (
       <ItemForm
         item={props.item}

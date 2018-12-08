@@ -27,16 +27,14 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
+store.dispatch(startSetItems()).then(() => {
+  renderApp();
+});
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
-    store.dispatch(startSetItems()).then(() => {
-      renderApp();
-    });
   } else {
-    store.dispatch(startSetItems()).then(() => {
-      renderApp();
-    });
     store.dispatch(logout());
+    history.push('/');
   }
 });

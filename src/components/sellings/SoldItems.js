@@ -45,7 +45,7 @@ const SoldItems = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items.filter((item) => item.isBought && (item.sellerId === state.auth.uid))
+    items: getItems(state.items, state.filters).filter((item) => item.isBought && (item.sellerId === state.auth.uid))
   }
 };
 

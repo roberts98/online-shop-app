@@ -1,4 +1,9 @@
 .item {
-  border: 1px solid #efefef;
-  margin-bottom: $m-size;
+  border-bottom: 1px solid #eee;
 }
+
+.item:hover {
+  background: #f7f7f7;
+  transition: background 300ms;
+}
+
