@@ -6,7 +6,9 @@ import ItemListFilters from './ItemListFilters';
 
 const ItemList = (props) => (
   <div className="container">
-    <ItemListFilters />
+    <ItemListFilters
+      itemsNumber={props.items.length}
+    />
     {props.items.map((item) => (
       <ItemListSingle
         key={item.name}

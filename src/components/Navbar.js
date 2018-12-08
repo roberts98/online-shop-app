@@ -12,7 +12,7 @@ const Navbar = () => (
           <Link to="/dashboard/sellings/sold" className="nav-link">Sellings</Link>
         </li>
         <li className="nav-item">
-          <Link to="/dashboard/my-items" className="nav-link">Account</Link>
+          <Link to="#" className="nav-link">Account</Link>
         </li>
       </ul>
     </div>

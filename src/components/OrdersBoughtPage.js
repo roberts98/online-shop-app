@@ -11,7 +11,7 @@ const OrdersPage = () => (
             <Link to="/dashboard/orders/bought">
               <li className="list-group-item active">Bought</li>
             </Link>
-            <Link to="/dashboard/orders/favourite">
+            <Link to="#">
               <li className="list-group-item">Favourite</li>
             </Link>
           </ul>

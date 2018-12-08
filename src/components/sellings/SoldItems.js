@@ -23,7 +23,7 @@ const SoldItems = (props) => (
           </ul>
         </div>
         <div className="col-sm-12 col-md-8 col-lg-9 col-xl-9">
-          <ItemListFilters />
+          {console.log(props.items.length)}
           {props.items.length > 0 ? (
             props.items.map((item) => (
               <ItemListSingle
@@ -44,8 +44,9 @@ const SoldItems = (props) => (
 );
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    items: getItems(state.items, state.filters).filter((item) => item.isBought && (item.sellerId === state.auth.uid))
+    items: state.items.filter((item) => (item.isBought && (item.sellerId === state.auth.uid)))
   }
 };
 
