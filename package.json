@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Robert Sidzinka",
   "license": "MIT",
+  "engines": {
+    "node": ">= 10"
+  },
   "scripts": {
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
@@ -27,7 +30,7 @@
     "firebase": "4.2.0",
     "history": "4.7.2",
     "moment": "2.18.1",
-    "node-sass": "4.5.3",
+    "node-sass": "4.11.0",
     "normalize.css": "7.0.0",
     "numeral": "2.0.6",
     "raf": "3.3.2",
