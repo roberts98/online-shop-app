@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import NotFoundPage from '../components/NotFoundPage';
-import { startBuyItem, startIncViews } from '../actions/items';
+import NotFoundPage from '../NotFoundPage';
+import { startBuyItem, startIncViews } from '../../actions/items';
 
 class ShowItem extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startAddItem } from '../actions/items';
+import { startAddItem } from '../../../actions/items';
 import ItemForm from './ItemForm';
 
 const AddItemPage = (props) => (

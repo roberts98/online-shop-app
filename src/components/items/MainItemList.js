@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import getItems from '../selectors/items';
+import getItems from '../../actions/items';
 import ItemListSingle from './ItemListSingle';
 import ItemListFilters from './ItemListFilters';
 

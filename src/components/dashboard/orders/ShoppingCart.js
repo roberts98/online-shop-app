@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ItemListSingle from './ItemListSingle';
+import ItemListSingle from '../../items/ItemListSingle';
 
 export const ShoppingCart = (props) => (
   <div className="container">

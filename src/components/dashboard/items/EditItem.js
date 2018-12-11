@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startEditItem } from '../actions/items';
+import { startEditItem } from '../../../actions/items';
 import ItemForm from './ItemForm';
-import NoAccesPage from './NoAccesPage';
+import NoAccesPage from '../../NoAccesPage';
 
 const EditItemPage = (props) => (
   <div className="container">

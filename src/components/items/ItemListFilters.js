@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter, setCategory, sortByDateASC, sortByDateDESC, sortByPriceASC, sortByPriceDESC } from '../actions/filters';
+import { setTextFilter, setCategory, sortByDateASC, sortByDateDESC, sortByPriceASC, sortByPriceDESC } from '../../actions/filters';
 
 const ItemListFilters = (props) => (
   <div>
