@@ -42,22 +42,26 @@ class ShowItem extends React.Component {
                 )}
               </div>
               <div className="col-md-5 pl-5 p-md-2">
-                {!this.props.uid || this.props.item.isBought || this.props.item.sellerId === this.props.uid ? (
-                  <div className="mt-3">
-                    <Link to={`/items/${this.props.item.id}/edit`}>
-                      <button className="btn btn-warning d-flex">Edit</button>
-                    </Link>
-                  </div>
+                {!this.props.uid || this.props.item.isBought ? (
+                  undefined
                 ) : (
-                    <button
-                      className="btn btn-primary my-3 btn-buy"
-                      onClick={() => {
-                        this.props.dispatch(startBuyItem(this.props.item.id));
-                        this.props.history.push('/dashboard/orders/bought');
-                      }}
-                    >
-                      Buy
-                    </button>
+                    this.props.item.sellerId === this.props.uid ? (
+                      <div className="mt-3">
+                        <Link to={`/items/${this.props.item.id}/edit`}>
+                          <button className="btn btn-warning d-flex">Edit</button>
+                        </Link>
+                      </div>
+                    ) : (
+                        <button
+                          className="btn btn-primary my-3 btn-buy"
+                          onClick={() => {
+                            this.props.dispatch(startBuyItem(this.props.item.id));
+                            this.props.history.push('/dashboard/orders/bought');
+                          }}
+                        >
+                          Buy
+                      </button>
+                      )
                   )}
                 <h5 className="text-dark mt-3 m-0">{this.props.item.name}</h5>
                 <p className="item-seller text-muted m-0">{this.props.item.sellerId}</p>

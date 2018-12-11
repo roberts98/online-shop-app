@@ -6,7 +6,7 @@ const ItemListSingle = ({ id, name, price, createdAt, photo, location, stateOfIt
   <Link to={`/items/${id}`}>
     <div className="row pb-2 py-3 my-0 item">
       <div className="col-sm-3">
-        <img src={photo} className="img-fluid" alt="photo" />
+        <img src={photo} className="img-fluid item-img" alt="photo" />
       </div>
       <div className="col-sm-6">
         <h5 className="text-dark mb-0">{name}</h5>

@@ -7,6 +7,7 @@ import EditItem from '../components/dashboard/items/EditItem';
 import NotFoundPage from '../components/NotFoundPage';
 import ShowItem from '../components/items/ShowItem';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import DashboardPage from '../components/dashboard/DashboardPage';
 import OrdersBoughtPage from '../components/dashboard/orders/OrdersBoughtPage';
 import SoldItems from '../components/dashboard/sellings/SoldItems';
@@ -21,7 +22,7 @@ export const history = createHistory();
 const AppRouter = () => (
   <Router history={history}>
     <div>
-    <Header />
+      <Header />
       <Switch>
         <Route path="/" component={MainItemList} exact={true} />
         <Route path="/register" component={RegisterPage} />
@@ -35,6 +36,7 @@ const AppRouter = () => (
         <PrivateRoute path="/create" component={AddItem} />
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer />
     </div>
   </Router>
 );
